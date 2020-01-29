@@ -1,0 +1,27 @@
+<div class="text-center">
+    <h2 class="jumbotron">Custom Filter Pipe Example</h2>
+    <h5 class="text-center alert alert-primary" role="alert">Select Recipe</h5>
+    <select name="recipes" [(ngModel)]="recipeModel">
+        <option [value]="r.id" *ngFor="let r of recipes">{{r.name}}</option>
+    </select>  
+</div> 
+<br>
+<hr>
+<div class="row">    
+    <div class="col">
+        <div class="row">    
+            <div class="col-md-6">    
+                <h5 class="text-center alert alert-secondary" role="alert">Ingredients List</h5>
+                <ul>
+                    <li *ngFor="let ing of ingredients | customFilter:'parentId':recipeModel">{{ing.name}}</li>
+                </ul>   
+            </div>
+            <div class="col-md-6">   
+                <h5 class="text-center alert alert-secondary" role="alert">Select Ingredients</h5>
+                <select name="ingredients">
+                    <option [value]="ing.id" *ngFor="let ing of ingredients | customFilter:'parentId':recipeModel" >{{ing.name}}</option>
+                </select>
+            </div>
+        </div>
+    </div>
+</div>
